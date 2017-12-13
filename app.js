@@ -2,6 +2,9 @@
 var express = require("express")
 var bodyParser = require("body-parser") // đọc thông tin người dùng post lên server
 var morgan = require("morgan") // log các reqest đến
+var mongoose = require("mongoose")
+
+var config = require("./config")
 
 var app = express()
 var port = process.env.PORT || 3000
@@ -13,6 +16,8 @@ app.use(bodyParser.urlencoded({ extended: true })) //nhận kiểu dữ liệu t
 app.use(morgan("dev")) // log mọi request ra console
 
 app.set("view engine", "ejs")
+
+mongoose.connect(config.getDbConnectionString(), { useMongoClient: true })
 
 app.get("/", function (req, res) {
     res.render("index")
