@@ -6,6 +6,7 @@ var mongoose = require("mongoose")
 
 var config = require("./config")
 var setupController = require("./controllers/SetupController")
+var todoController = require("./controllers/TodoController")
 
 var app = express()
 var port = process.env.PORT || 3000
@@ -23,6 +24,7 @@ app.set("view engine", "ejs")
 
 mongoose.connect(config.getDbConnectionString(), { useMongoClient: true })
 setupController(app)
+todoController(app)
 
 app.get("/", function (req, res) {
     res.render("index")
