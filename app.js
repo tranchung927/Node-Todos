@@ -7,7 +7,7 @@ var app = express()
 var port = process.env.PORT || 3000
 
 app.use("/assets", express.static(__dirname + "/public"))
-app.use(bodyParser.json) // đọc dữ liêu gửi lên là json
+app.use(bodyParser.json()) // đọc dữ liêu gửi lên là json
 app.use(bodyParser.urlencoded({ extended: true })) //nhận kiểu dữ liệu tùy ý post về server
 
 app.use(morgan("dev")) // log mọi request ra console
@@ -15,7 +15,7 @@ app.use(morgan("dev")) // log mọi request ra console
 app.set("view engine", "ejs")
 
 app.get("/", function (req, res) {
-    res.render("index ")
+    res.render("index")
 })
 
 app.listen(port, function () {
