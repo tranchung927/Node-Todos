@@ -1,9 +1,46 @@
-<html>
+<html ng-app="app.todos">
     <head>
         <title>Node/Angular Todos</title>
+
+        <!-- Load CDN Style -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Load app style -->
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <!-- Load CDN Script -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+
+        <!-- Load app -->
+        <script src="assets/js/main/app.js"></script>
     </head>
 
-    <body>
-        <h1>Node todos!!!</h1>
+    <body ng-controller="todoController">
+        <div class="container">
+                <div class="jumbotron text-center">
+                    <h1>{{ appName }}<span class="label label-info">10</span></h1>
+                </div>
+
+                <div id="todo-list" class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="checkbox">
+                            <input type="checkbox"> Học node.js!!!
+                        </div>
+                    </div>
+                </div>
+
+                <div id="todo-form" class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text-center">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control input-lg text-center" placeholder="What do you want to do?">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg">Add</button>
+                        </form>
+                    </div>
+                </div>
+        </div>
     </body>
 </html>
