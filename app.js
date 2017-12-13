@@ -5,6 +5,7 @@ var morgan = require("morgan") // log các reqest đến
 var mongoose = require("mongoose")
 
 var config = require("./config")
+var setupController = require("./controllers/SetupController")
 
 var app = express()
 var port = process.env.PORT || 3000
@@ -17,7 +18,11 @@ app.use(morgan("dev")) // log mọi request ra console
 
 app.set("view engine", "ejs")
 
+// db info
+// console.log(config.getDbConnectionString())
+
 mongoose.connect(config.getDbConnectionString(), { useMongoClient: true })
+setupController(app)
 
 app.get("/", function (req, res) {
     res.render("index")
