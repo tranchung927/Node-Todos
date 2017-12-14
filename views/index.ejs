@@ -24,8 +24,8 @@
 
                 <div id="todo-list" class="row">
                     <div class="col-sm-6 col-sm-offset-3">
-                        <div class="checkbox">
-                            <input type="checkbox"> Học node.js!!!
+                        <div class="checkbox" ng-repeat="todo in todos">
+                            <input type="checkbox" ng-model="todo.isDone"> <span ng-class="{strike: todo.isDone}">{{ todo.text }}</span>
                         </div>
                     </div>
                 </div>
@@ -34,10 +34,10 @@
                     <div class="col-sm-8 col-sm-offset-2 text-center">
                         <form>
                             <div class="form-group">
-                                <input type="text" class="form-control input-lg text-center" placeholder="What do you want to do?">
+                                <input type="text" ng-model="fromData.text" class="form-control input-lg text-center" placeholder="What do you want to do?">
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-lg">Add</button>
+                            <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
                         </form>
                     </div>
                 </div>
