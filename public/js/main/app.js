@@ -1,22 +1,14 @@
 var app = angular.module("app.todos", ["xeditable"])
 
-app.controller("todoController", ['$scope', function ($scope) {
+app.controller("todoController", ['$scope', 'svTodos', function ($scope, svTodos) {
     $scope.appName = "Todo Dashboard "
-    $scope.todos = [
-        {
-            text: "Khởi tạo dự án, include thư viện bootstrap, fontawesome, angularjs, ...",
-            isDone: true
-        }, {
-            text: "Cài đặt Angulerjs app, controller, khởi tạo dữ liệu ban đầu",
-            isDone: true
-        }, {
-            text: "Tạo services gọi api, binding dữ liệu, action, ...",
-            isDone: false
-        }, {
-            text: "Hoàn thành ứng dụng, deploy lên heroku ...",
-            isDone: false
-        }
-    ]
+    $scope.fromData = {}
+    $scope.todos = []
+
+    svTodos.get().then(function (data) {
+        $scope.todos = data.todos
+        console.log(data)
+    })
 
     $scope.createTodo = function () {
         var todo = {
